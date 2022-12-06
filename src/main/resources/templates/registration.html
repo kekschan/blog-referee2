@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Московская Федерация Судей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<!--
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<main>
+    <div class="hidden sm:block" aria-hidden="true">
+        <div class="py-5">
+            <div class="border-t border-gray-200"></div>
+        </div>
+    </div>
+
+    <div class="mt-10 sm:mt-0">
+        <div class="md:grid md:grid-cols-4   md:gap-6">
+            <div class="mt-5 md:col-start-2 md:col-span-2 md:mt-0">
+                <!-- в метод registration post отравляется запрос-->
+                <form method="post" action="/registration">
+                    <div class="overflow-hidden shadow sm:rounded-md border-2 border-white">
+                        <div class="bg-sky-50 px-4 py-5 sm:p-6">
+                            <div class="grid grid-cols-6 gap-6">
+
+                                <!--Поле ввода для имени-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="firstname" class="block text-sm
+                                     font-medium text-gray-700">
+
+                                        Имя</label>
+                                    <input type="text" name="firstname" id="firstname"
+                                           autocomplete="firstname"
+                                           class=" mt-1 block w-full rounded-md border-gray-300
+                                            shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для фамилии-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="lastname" class="block text-sm
+                                    font-medium text-gray-700">
+
+                                        Фамилия</label>
+                                    <input type="text" name="lastname" id="lastname"
+                                           autocomplete="lastname"
+                                           class="mt-1 block w-full rounded-md border-gray-300
+                                           shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для почты-->
+
+                                <div class="col-span-6 sm:col-span-4">
+
+                                    <label for="email" class="block text-sm
+                                     font-medium text-gray-700">
+
+                                        Email</label>
+                                    <input type="text" name="email" id="email"
+                                           autocomplete="email"
+                                           class="mt-1 block w-full rounded-md border-gray-300
+                                           shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+
+
+                                </div>
+
+                                <!--Поле ввода для страны-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium text-gray-700"
+
+                                    >Страна</label>
+                                    <select id="country" name="country" autocomplete="country"
+                                            class="mt-1 block w-full rounded-md border border-gray-300
+                                             bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option>Россия</option>
+                                        <option>Украина</option>
+                                        <option>Беларусь</option>
+                                    </select>
+                                </div>
+
+                                <!--Поле ввода для номера телефона-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="numberPhone"  class="block text-sm
+                                     font-medium text-gray-700"
+
+                                    >Номер телефона</label>
+                                    <input type="text" name="numberPhone"  id="numberPhone"
+                                           autocomplete="numberPhone"
+                                           class="mt-1 block w-full rounded-md border-gray-300
+                                           shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Функция для проверки вводимого номера телефона
+                                    Надо еще прикрутить отдельную проверку для каждого региона-->
+
+                                <script>
+                                    let numberPhone = document.getElementById("numberPhone");
+                                    numberPhone.oninput = () => phoneMask(numberPhone)
+
+                                    function phoneMask(inputEl) {
+                                        let patStringArr = "+7(___)___-__-__".split('');
+                                        let arrPush = [3, 4, 5, 7, 8, 9, 11, 12, 14, 15]
+                                        let val = inputEl.value;
+                                        let arr = val.replace(/\D+/g, "").split('').splice(1);
+                                        let n;
+                                        let ni;
+                                        arr.forEach((s, i) => {
+                                            n = arrPush[i];
+                                            patStringArr[n] = s
+                                            ni = i
+                                        });
+                                        arr.length < 10 ? inputEl.style.color = 'red' : inputEl.style.color = 'green';
+                                        inputEl.value = patStringArr.join('');
+                                        n ? inputEl.setSelectionRange(n + 1, n + 1) : inputEl.setSelectionRange(17, 17)
+                                    }
+                                </script>
+
+                                <!--Поле ввода для пароля-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="password" class="block text-sm font-medium text-gray-700"
+
+                                    >Пароль</label>
+                                    <input type="password" name="password" id="password"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для проверки пароля-->
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="repeat-password" class="block text-sm font-medium text-gray-700"
+
+                                    >Повторите пароль</label>
+                                    <input type="password" name="repeat-password"
+                                           id="repeat-password"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для города-->
+
+                                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                    <label for="city" class="block text-sm font-medium text-gray-700"
+
+                                    >Город</label>
+                                    <input type="text" name="city" id="city"
+                                           autocomplete="address-level2"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для улицы-->
+
+                                <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                    <label for="street" class="block text-sm font-medium text-gray-700"
+
+                                    >Улица</label>
+                                    <input type="text" name="street" id="street"
+                                           autocomplete="street"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для номера дома-->
+
+                                <div class="col-span-6 sm:col-span-3 lg:col-span-1">
+                                    <label for="house" class="block text-sm font-medium text-gray-700"
+
+                                    >Дом</label>
+                                    <input type="text" name="house" id="house" autocomplete="house"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+
+                                <!--Поле ввода для номера квартиры-->
+
+                                <div class="col-span-6 sm:col-span-3 lg:col-span-1">
+                                    <label for="flat" class="block text-sm font-medium text-gray-700"
+
+                                    >Квартира</label>
+                                    <input type="text" name="flat" id="flat" autocomplete="flat"
+                                           class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Кнопка сохранить и отравить в бд-->
+
+                        <div class="bg-indigo-50 px-4 py-3 text-right sm:px-6">
+                            <button type="submit"
+                                    class="inline-flex justify-center rounded-md border border-transparent
+                                     bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700
+                                     focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Сохранить
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
