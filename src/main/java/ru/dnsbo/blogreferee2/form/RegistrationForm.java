@@ -22,9 +22,4 @@ public class RegistrationForm {
     private String house;
     private String flat;
 
-   /* public Users toUser(PasswordEncoder passwordEncoder){
-        return new Users
-                (firstname,lastname,email,country,numberPhone,
-                passwordEncoder.encode(password), city,street,house,flat);
-    }*/
 }

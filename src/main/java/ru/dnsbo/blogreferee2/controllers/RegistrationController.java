@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.dnsbo.blogreferee2.data.UsersRepository;
 import ru.dnsbo.blogreferee2.form.RegistrationForm;
+import ru.dnsbo.blogreferee2.models.Users;
 import ru.dnsbo.blogreferee2.services.RegistrationService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/registration")
@@ -28,7 +30,15 @@ public class RegistrationController {
     }
 
     @PostMapping
-    private String PostRegistrationPage( RegistrationForm form) {
+    private String PostRegistrationPage(RegistrationForm form) {
+
+        //проверка на существующий email
+        if(usersRepository.findByEmail(form.getEmail()).isPresent()){
+            return "registration";
+        }
+
+
+
         registrationService.registration(form);
         return "redirect:/login";
     }
