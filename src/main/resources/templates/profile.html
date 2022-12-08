@@ -42,7 +42,7 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
 
-<div >
+<div>
     <div th:fragment="header">
         <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
             <svg class="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
@@ -185,28 +185,34 @@
                         </span>
                         <span class="tracking-wide">Обо мне</span>
                     </div>
+                    <form action="/profile" method="get" th:object="${users}"></form>
                     <div class="text-gray-700">
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Имя</div>
-                                <div class="px-4 py-2">Jane</div>
+                                <div class="px-4 py-2" th:text="*{users.getFirstname()}">Имя</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Фамилия</div>
-                                <div class="px-4 py-2">Doe</div>
+                                <div class="px-4 py-2" th:text="*{users.getLastname()}">Фамилия</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Номер телефона</div>
-                                <div class="px-4 py-2">+11 998001001</div>
+                                <div class="px-4 py-2" th:text="*{users.getNumberPhone()}">Номер телефона</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Адрес</div>
-                                <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                                <div class="px-4 py-2" th:text="*{users.getCountry() + ', '
+                                                                + users.getCity() + ', '
+                                                                + users.getStreet() + ' '
+                                                                + users.getHouse()+ ', '
+                                                                + users.getFlat()}">Адрес
+                                </div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Почта</div>
                                 <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                                    <p class="text-blue-800" th:text="*{users.getEmail()}">email</p>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2">
@@ -217,7 +223,7 @@
                     </div>
                     <button
                             class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">
-                       Изменить
+                        Изменить
                     </button>
                 </div>
                 <!-- End of about section -->
