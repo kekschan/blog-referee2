@@ -100,7 +100,7 @@
                             <button @click="open = !open"
                                     class="inline-block rounded-lg px-3 py-1.5 text-sm font-semibold
                        leading-6 text-indigo-900 shadow-sm ring-1 ring-indigo-600/5 hover:ring-gray-900/20">
-                                <span>Борщёв Денис</span>
+                                <span  th:text="${users.getLastname() + ' ' + users.getFirstname()}">Фамилия Имя</span>
                                 <svg fill="currentColor" viewBox="0 0 20 20"
                                      class="inline w-4 h-4 transition-transform duration-200 transform">
                                     <path fill-rule="evenodd"
@@ -149,7 +149,9 @@
                              src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                              alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Борщёв Денис</h1>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1"
+                        th:text="${users.getLastname() + ' ' + users.getFirstname()}"
+                        >Фамилия Имя</h1>
                     <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
                     <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
                         consectetur adipisicing elit.
@@ -159,7 +161,8 @@
                         <li class="flex items-center py-3">
                             <span>Статус книжки</span>
                             <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Активная</span></span>
+                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm"
+                                    th:text="${users.getState()}">Статус</span></span>
                         </li>
                         <li class="flex items-center py-3">
                             <span>Дата окончания</span>
@@ -217,7 +220,7 @@
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">День рождение</div>
-                                <div class="px-4 py-2">Feb 06, 1998</div>
+                                <div class="px-4 py-2" th:text="*{users.getDateBirthday()}">День Рождения</div>
                             </div>
                         </div>
                     </div>

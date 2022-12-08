@@ -8,6 +8,9 @@
     <link th:href="@{/css/registrationAndLogin}" rel="stylesheet" type="text/css">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.5/dist/datepicker.js"></script>
+
+
     <script>
         tailwind.config = {
             theme: {
@@ -65,7 +68,7 @@
                                            autocomplete="firstname"
                                            class=" mt-1 block w-full rounded-md border-gray-300
                                             shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           minlength="3" maxlength="20" required />
+                                           minlength="3" maxlength="20" required/>
                                 </div>
 
                                 <!--Поле ввода для фамилии-->
@@ -79,7 +82,7 @@
                                            autocomplete="lastname"
                                            class="mt-1 block w-full rounded-md border-gray-300
                                            shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           minlength="2" maxlength="20" required />
+                                           minlength="2" maxlength="20" required/>
                                 </div>
 
                                 <!--Поле ввода для почты-->
@@ -94,7 +97,7 @@
                                            autocomplete="email"
                                            class="mt-1 block w-full rounded-md border-gray-300
                                            shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           minlength="4" maxlength="30" required />
+                                           minlength="4" maxlength="30" required/>
 
 
                                 </div>
@@ -117,17 +120,18 @@
                                 <!--Поле ввода для номера телефона-->
 
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="numberPhone"  class="block text-sm
+                                    <label for="numberPhone" class="block text-sm
                                      font-medium text-gray-700"
 
                                     >Номер телефона</label>
-                                    <input type="tel" name="numberPhone"  id="numberPhone"
+                                    <input type="tel" name="numberPhone" id="numberPhone"
                                            autocomplete="numberPhone"
                                            class="mt-1 block w-full rounded-md border-gray-300
                                            shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                            pattern="[\+]\d{1}[\(]\d{3}[\)]\d{3}[\-]\d{2}[\-]\d{2}"
                                            minlength="18" maxlength="18" required/>
                                 </div>
+
 
                                 <!--Функция для проверки вводимого номера телефона
                                     Надо еще прикрутить отдельную проверку для каждого региона-->
@@ -168,7 +172,7 @@
 
                                 <!--Поле ввода для проверки пароля-->
 
-                                <div class="col-span-6 sm:col-span-3">
+                                <!--<div class="col-span-6 sm:col-span-3">
                                     <label for="repeat-password" class="block text-sm font-medium text-gray-700"
 
                                     >Повторите пароль</label>
@@ -176,9 +180,28 @@
                                            id="repeat-password"
                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm
                                             focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           minlength="1" maxlength="100" required/>
-                                </div>
+                                           minlength="1" maxlength="100"/>
+                                </div>-->
 
+
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="dateBirthday" class="block text-sm font-medium text-gray-700"
+                                           style="margin-left: 2px;"
+                                    >Дата рождения</label>
+                                    <div class="flex items-center justify-start">
+                                        <div class="relative">
+                                            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path
+                                                        fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2
+                                                        2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                        clip-rule="evenodd"></path></svg>
+                                            </div>
+                                            <input datepicker datepicker-format="dd.mm.yyyy" name="dateBirthday" id="dateBirthday" type="text" class="pl-10 mt-1 block w-full rounded-md border-gray-300 shadow-sm
+                                            focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Дата" required/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!--Поле ввода для города-->
 
                                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">

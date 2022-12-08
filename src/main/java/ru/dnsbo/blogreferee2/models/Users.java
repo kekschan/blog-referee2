@@ -30,6 +30,7 @@ public class Users {
     private String lastname;
     private String email;
     private String numberPhone;
+    private String dateBirthday;
     private String password;
     private String country;
     private String city;

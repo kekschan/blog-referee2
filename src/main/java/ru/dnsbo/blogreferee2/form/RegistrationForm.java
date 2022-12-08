@@ -18,6 +18,7 @@ public class RegistrationForm {
     private String password;
     private String country;
     private String city;
+    private String dateBirthday;
     private String street;
     private String house;
     private String flat;

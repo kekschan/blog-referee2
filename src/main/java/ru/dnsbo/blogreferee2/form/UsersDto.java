@@ -1,8 +1,10 @@
-package ru.dnsbo.blogreferee2.models;
+package ru.dnsbo.blogreferee2.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import ru.dnsbo.blogreferee2.models.State;
+import ru.dnsbo.blogreferee2.models.Users;
 
 import java.io.Serializable;
 
@@ -18,6 +20,7 @@ public class UsersDto implements Serializable {
     private final String email;
     private final String numberPhone;
     private final String country;
+    private final String dateBirthday;
     private final String city;
     private final String street;
     private final String house;
@@ -32,6 +35,7 @@ public class UsersDto implements Serializable {
                 .numberPhone(users.getNumberPhone())
                 .country(users.getCountry())
                 .city(users.getCity())
+                .dateBirthday(users.getDateBirthday())
                 .street(users.getStreet())
                 .house(users.getHouse())
                 .flat(users.getFlat())

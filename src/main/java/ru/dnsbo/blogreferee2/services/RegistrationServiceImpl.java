@@ -33,6 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .numberPhone(registrationForm.getNumberPhone())
                 .country(registrationForm.getCountry())
                 .city(registrationForm.getCity())
+                .dateBirthday(registrationForm.getDateBirthday())
                 .street(registrationForm.getStreet())
                 .house(registrationForm.getHouse())
                 .flat(registrationForm.getFlat())

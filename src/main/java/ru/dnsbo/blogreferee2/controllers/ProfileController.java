@@ -7,10 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.dnsbo.blogreferee2.data.UsersRepository;
-import ru.dnsbo.blogreferee2.models.Users;
-import ru.dnsbo.blogreferee2.models.UsersDto;
+import ru.dnsbo.blogreferee2.form.UsersDto;
 import ru.dnsbo.blogreferee2.security.details.UsersDetailsImpl;
-import ru.dnsbo.blogreferee2.services.RegistrationService;
 
 @Controller
 @RequestMapping("/profile")
