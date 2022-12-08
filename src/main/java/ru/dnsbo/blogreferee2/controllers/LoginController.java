@@ -4,6 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,7 +19,7 @@ public class LoginController {
             return "redirect:/profile";
         }
         if (request.getParameterMap().containsKey("error")) {
-            model.addAttribute("error", true);
+            model.addAttribute("error", "Пользователь не найден");
         }/* else {
             model.addAttribute("error", false);
         }*/
