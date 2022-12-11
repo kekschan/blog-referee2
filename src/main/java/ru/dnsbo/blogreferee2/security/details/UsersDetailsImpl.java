@@ -3,13 +3,11 @@ package ru.dnsbo.blogreferee2.security.details;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.dnsbo.blogreferee2.models.Role;
 import ru.dnsbo.blogreferee2.models.State;
 import ru.dnsbo.blogreferee2.models.Users;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 public class UsersDetailsImpl implements UserDetails {
 

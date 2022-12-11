@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.dnsbo.blogreferee2.data.UsersRepository;
 import ru.dnsbo.blogreferee2.form.UsersDto;
+import ru.dnsbo.blogreferee2.models.Books.Books;
 import ru.dnsbo.blogreferee2.security.details.UsersDetailsImpl;
 
 @Controller
@@ -16,7 +17,7 @@ public class ProfileController {
 
     @Autowired
     private UsersRepository usersRepository;
-
+    
 
     @GetMapping
     private String GetShopPage(Model model, Authentication authentication) {
