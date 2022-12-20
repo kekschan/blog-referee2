@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 
 @Data
 public class RegistrationForm {
-    @Size(min = 3,max = 10)
+
     private String firstname;
     private String lastname;
     private String email;
