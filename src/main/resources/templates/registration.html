@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Московская Федерация Судей</title>
@@ -27,20 +27,6 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<!--
-  This example requires some changes to your config:
-
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <main>
     <div class="hidden sm:block" aria-hidden="true">
         <div class="py-5">
@@ -52,7 +38,7 @@
         <div class="md:grid md:grid-cols-4   md:gap-6">
             <div class="mt-5 md:col-start-2 md:col-span-2 md:mt-0">
                 <!-- в метод registration post отравляется запрос-->
-                <form method="post" action="/registration">
+                <form th:action="@{/registration}" th:object="${form}" method="post">
                     <div class="overflow-hidden shadow sm:rounded-md border-2 border-white">
                         <div class="bg-sky-50 px-4 py-5 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
@@ -65,10 +51,14 @@
 
                                         Имя</label>
                                     <input type="text" name="firstname" id="firstname"
-                                           autocomplete="firstname"
+                                           autocomplete="firstname" th:field="*{firstname}"
                                            class=" mt-1 block w-full rounded-md border-gray-300
                                             shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                           minlength="3" maxlength="20" required/>
+                                          />
+                                    <div th:if="${#fields.hasErrors('firstname')}"
+                                         th:errors="*{firstname}" >
+                                        Ошибка ввода
+                                    </div>
                                 </div>
 
                                 <!--Поле ввода для фамилии-->

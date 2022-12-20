@@ -1,16 +1,11 @@
 package ru.dnsbo.blogreferee2.form;
 
 import lombok.Data;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.dnsbo.blogreferee2.models.*;
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
 public class RegistrationForm {
-
+    @Size(min = 3,max = 10)
     private String firstname;
     private String lastname;
     private String email;
@@ -22,5 +17,4 @@ public class RegistrationForm {
     private String street;
     private String house;
     private String flat;
-
 }
